@@ -17,3 +17,11 @@ Et on a commencé aussi a créer quelques wireframes :
  - Détail d’un quizz : https://wireframe.cc/hbrvgq
  - Résultat d’un quizz: https://wireframe.cc/r96bdA
  - Liste des sujets : https://wireframe.cc/8nA9pN
+
+# Oquiz, challenge jour 1
+
+En utilisant l'analyse préliminaire de la BDD, le MCD, et la [fiche récap MLD](https://github.com/O-clock-Alumni/fiches-recap/blob/master/bdd/conception-04-mld.md), écrire le MLD de l'application !
+
+## Bonus
+
+Écrire le fichier SQL pour créer les tables listées dans le MLD.
