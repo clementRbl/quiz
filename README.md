@@ -13,3 +13,7 @@ Nous avons commencé a définir les besoins sous forme de uses cases disponibles
 Et on a commencé aussi a créer quelques wireframes : 
 
  - Page de connexion : https://wireframe.cc/wvwa2y
+ - Page d'accueil : https://wireframe.cc/V5m8ot
+ - Détail d’un quizz : https://wireframe.cc/hbrvgq
+ - Résultat d’un quizz: https://wireframe.cc/r96bdA
+ - Liste des sujets : https://wireframe.cc/8nA9pN

@@ -1,4 +1,4 @@
-# Le projet
+# Le quiz
 
 Besoin de créer une application web qui est une plateforme de quizz pour une école.
 
@@ -24,9 +24,8 @@ La gestion se fera directement par BDD, que le client gérera tout seul, donc pa
 
  - Acceder à un formulaire de connexion *afin de* pouvoir me connecter
  - Acceder à un formulaire d'inscription *afin de* pouvoir créer mon compte
- - Acceder à une liste de projet *afin de* pouvoir choisir un projet
- - Acceder à une liste de projet par difficulté *afin de* pouvoir choisir un projet suivant sa difficulté
- - Acceder à une liste de projet par thème *afin de* pouvoir choisir un projet suivant son thème
+ - Acceder à une liste de quiz *afin de* pouvoir choisir un quiz
+ - Acceder à une liste de quiz par thème *afin de* pouvoir choisir un quiz suivant son thème
 
 ## En tant que membre je veux :
  - Accéder à un bouton de déconnexion *afin de* pouvoir me déconnecter
