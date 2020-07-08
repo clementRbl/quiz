@@ -1,0 +1,8 @@
+theme (id, nom)
+niveau (id, nom)
+quizz (id, titre, description, #utilisateur(id))
+question (id, description, contexte, wiki, #quizz(id), #niveau(id), #proposition(id))
+utilisateur (id, prénom, nom, email, mot de passe)
+proposition (id, description, #question(id))
+
+quizz AVOIR theme ( #quizz(id), #theme(id) )
