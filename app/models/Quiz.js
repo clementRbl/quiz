@@ -36,7 +36,7 @@ class Quiz extends CoreModel {
     }
 
     set user_id(value) {
-        if (!isNaN(parseInt(value, 10))) {
+        if (isNaN(parseInt(value, 10))) {
             throw Error("Quiz.user_id must be an integer !");
         }
         this._user_id = value;

@@ -27,7 +27,7 @@ class Answer extends CoreModel {
     }
 
     set question_id(value) {
-        if (!isNaN(parseInt(value, 10))) {
+        if (isNaN(parseInt(value, 10))) {
             throw Error("Answer.question_id must be an integer !");
         }
         this.question_id = value;

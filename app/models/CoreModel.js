@@ -14,7 +14,7 @@ class CoreModel {
     };
 
     set id(value) {
-        if (!isNaN(parseInt(value, 10))) {
+        if (isNaN(parseInt(value, 10))) {
             throw Error("CoreModel.id must be an integer !");
             // on "lève" une erreur => ça arrête tout !
         }

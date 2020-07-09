@@ -1,6 +1,9 @@
 const CoreModel = require('./CoreModel');
 
 class Question extends CoreModel {
+
+    static table = "question";
+
     _question;
     _anecdote;
     _wiki;
@@ -49,21 +52,21 @@ class Question extends CoreModel {
     }
 
     set level_id(value) {
-        if (!isNaN(parseInt(value, 10))) {
+        if (isNaN(parseInt(value, 10))) {
             throw Error("Question.level_id must be an integer !");
         }
         this._level_id = value;
     }
 
     set answer_id(value) {
-        if (!isNaN(parseInt(value, 10))) {
+        if (isNaN(parseInt(value, 10))) {
             throw Error("Question.answer_id must be an integer !");
         }
         this._answer_id = value;
     }
 
     set quiz_id(value) {
-        if (!isNaN(parseInt(value, 10))) {
+        if (isNaN(parseInt(value, 10))) {
             throw Error("Question.quiz_id must be an integer !");
         }
         this._quiz_id = value;
