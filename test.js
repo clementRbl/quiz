@@ -1,22 +1,43 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
-const dataMapper = require('./app/dataMapper');
+const Level = require("./app/models/Level");
 
-dataMapper.getOneLevel(1, (error, monLevel) => {
-  console.log(monLevel);
+Level.findAll((error, levels) => {
+  console.log("FindAll Error", error);
+  console.log("Tableau de levels", levels);
 });
 
+// On cherche le level pour id 1
+Level.find(1, (error, level) => {
+  console.log("Find Error", error);
+  console.log(level);
 
+  level.name = "Débutant";
+  // On met à jour en BDD l'instance du level récupéré
+  level.update((error, updatedLevel) => {
+    console.log("Update Error", error);
+    // console.log("Comparaison", level === updatedLevel) --> true
+    console.log("updatedLevel", updatedLevel);
+  });
+});
 
-// const Question = require('./app/models/Question');
+// On insert en BDD une nouvelle instance
+const newLevel = new Level({
+  name: "Ultra dur",
+});
+console.log(newLevel);
+newLevel.insert((err, level) => {
+  console.log("Insert Error", err);
+  console.log("Inserted Level", level);
+  
+  
+  // On supprime en BDD l'instance qu'on vient de créer
+  console.log(newLevel);
+  level.delete((err, deleted) => {
+    console.log("Insert Error", err);
+    console.log("Est-elle vraiment supprimé", deleted === true);
+    console.log("Delete Level", level);
+  });
+});
 
-// const maQuestion = new Question({
-//     id: 12,
-//     question: "Qui etes vous ?",
-//     anecdote: "Parce c'est notre projet",
-//     wiki: "http://wikipedia.com",
-//     level_id: 1,
-//     answer_id: 2,
-//     quiz_id: 3
-// })
