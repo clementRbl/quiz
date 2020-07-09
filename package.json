@@ -1,0 +1,26 @@
+{
+  "name": "oquiz",
+  "version": "1.0.0",
+  "description": "Un client est venu nous voir pour nous demander de lui créer un site qui fait des quizzes ! Apparemment c'est quelqu'un d'important car il connait Elon Musk, houlala !",
+  "main": "test.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Iliade/oquiz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Iliade/oquiz/issues"
+  },
+  "homepage": "https://github.com/O-clock-Iliade/oquiz#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pg": "^8.2.2"
+  }
+}

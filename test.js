@@ -1,4 +1,15 @@
-const Question = require('./app/models/Question');
+const dotenv = require('dotenv');
+dotenv.config();
+
+const dataMapper = require('./app/dataMapper');
+
+dataMapper.getOneLevel(1, (error, monLevel) => {
+  console.log(monLevel);
+});
+
+
+
+// const Question = require('./app/models/Question');
 
 // const maQuestion = new Question({
 //     id: 12,
