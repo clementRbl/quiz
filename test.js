@@ -9,8 +9,8 @@ Level.findAll((error, levels) => {
 });
 
 // On cherche le level pour id 1
-Level.find(1, (error, level) => {
-  console.log("Find Error", error);
+Level.findById(1, (error, level) => {
+  console.log("findById Error", error);
   console.log(level);
 
   level.name = "Débutant";

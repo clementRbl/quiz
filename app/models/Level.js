@@ -59,7 +59,7 @@ class Level extends CoreModel {
    * @param {function} callback
    * @returns void
    */
-  static find(id, callback) {
+  static findById(id, callback) {
     // On fait une requete SQL ex -->  SELECT * FROM "level" WHERE id = 1
     client.query(
       `SELECT * FROM "${Level.table}" WHERE id = $1`,
