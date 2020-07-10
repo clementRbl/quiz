@@ -123,7 +123,12 @@ const question = new Question({
 //   console.log("tagAdded", userAdded);
 // });
 
-question.update((error, userAdded) => {
-  console.log("insert error", error);
-  console.log("tagAdded", userAdded);
-});
+// Si id on update si pas id on insert
+// question.save((error, questionSaved) => {
+//   console.log("insert error", error);
+//   console.log("questionSaved", questionSaved);
+// });
+
+
+// Exemple de findBy
+// Question.findBy({id: 3, answer_id: 10 }, callback) 
