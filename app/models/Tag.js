@@ -1,6 +1,8 @@
 const CoreModel = require('./CoreModel');
 
 class Tag extends CoreModel {
+    static table = "tag";
+
     _name;
 
     constructor(obj) {
