@@ -109,7 +109,6 @@ const tag = new Tag({
   name: "Nouveau tag",
 });
 const question = new Question({
-  id: 12,
   question: `Ceci est ma question`,
   anecdote: `Ceci est mon anecdote`,
   wiki: 'http://wikipedia.fr',
@@ -118,17 +117,27 @@ const question = new Question({
   quiz_id: 3,
 });
 
+
 // tag.insert((error, userAdded) => {
 //   console.log("insert error", error);
 //   console.log("tagAdded", userAdded);
 // });
 
 // Si id on update si pas id on insert
-// question.save((error, questionSaved) => {
-//   console.log("insert error", error);
-//   console.log("questionSaved", questionSaved);
-// });
+question.save((error, questionSaved) => {
+  console.log("insert error", error);
+  console.log("questionSaved", questionSaved);
+
+  console.log('-------------------------------------- \n\r');
+
+  questionSaved.save((error, questionSaved) => {
+    console.log("update error", error);
+    console.log("questionSaved", questionSaved);
+  });
+});
 
 
 // Exemple de findBy
 // Question.findBy({id: 3, answer_id: 10 }, callback) 
+
+

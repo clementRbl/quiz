@@ -70,6 +70,45 @@ class CoreModel {
   }
 
   /**
+   * Fonction permettant de chercher un enregistrement suivant une liste de filtres
+   * @param {Object} params 
+   * @param {function} callback 
+   */
+  static findBy(params, callback){
+    // param = {id: 3, answer_id: 10 }
+    // ex: Object.keys(params) = ['id', 'answer_id']
+
+    const _cleanKeyValues = [];
+    const values = [];
+    let incKeyValues = 1;
+
+    // On parcours les clefs de la variables params
+    Object.keys(params).forEach((key) => {
+        _cleanKeyValues.push(`"${key}" = $${incKeyValues}`);
+        values.push(params[key])
+        incKeyValues++;
+    });
+
+    const keyValues = _cleanKeyValues.join(' AND ');
+
+    const query = {
+      text: `SELECT * FROM "${this.table}" WHERE ${keyValues}`,
+      values: values,
+    };
+
+    client.query(query, (err, res) => {
+      if(err){
+        callback(err, null);
+      }
+      if(res.rowCount){
+        callback(null, res.rows);
+      } else {
+        callback(null, null);
+      }
+    })
+  }
+
+  /**
    * Fonction permettant d'insérer un nouveau level
    * @param {function} callback
    */
@@ -216,6 +255,24 @@ class CoreModel {
         callback("Delete did not target any rows", this);
       }
     });
+  }
+
+  /**
+   * Fonction permettant d'insert ou d'update un enregistrement en BDD
+   * @param {function} callback 
+   */
+  save(callback){
+
+    // Si j'ai un ID
+      if(this.id){
+          // Alors j'update l'entité en BDD
+          this.update(callback);
+      }
+      // Si je n'ai pas d'ID
+      else {
+          // J'enregistre l'entité en BDD
+          this.insert(callback);
+      }
   }
 }
 
