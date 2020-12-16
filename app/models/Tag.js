@@ -1,30 +1,19 @@
-// const CoreModel = require('./CoreModel');
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../database');
 
-// class Tag extends CoreModel {
-//     static table = "tag";
+class Tag extends Model {}
 
-//     _name;
+Tag.init({
+  // On défini les attributs de notre modèle
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+}, {
+  // On paramètre le model
+  sequelize, // On a besoin de passer l'instance de la connexion en BDD
+  tableName: 'tag'
+});
 
-//     constructor(obj) {
-//         // Ici on passe l'objet à super ( le constructeur du parent)
-//         // Afin qu'il puisse récupérer ce dont il a besoin
-//         super(obj);
 
-//         // Mais on peut lui passer tout simplement l'id à la place ( si il attend un id )
-//         // super(obj.id);
-//         this._name = obj.name;
-//     }
-
-//     get name() {
-//         return this._name;
-//     }
-
-//     set name(value) {
-//         if (typeof value !== 'string') {
-//             throw Error("Tag.name must be a string !");
-//         }
-//         this._name = value;
-//     }
-// }
-
-// module.exports = Tag;
+module.exports = Tag;
