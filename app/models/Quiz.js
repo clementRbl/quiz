@@ -1,64 +1,22 @@
-const CoreModel = require('./CoreModel');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = require('../database');
 
-class Quiz extends CoreModel {
-    static table = 'quiz';
+class Quiz extends Model {}
 
-    _title;
-    _description;
-    _user_id;
-
-    constructor(obj) {
-        // Ici on passe l'objet à super ( le constructeur du parent)
-        // Afin qu'il puisse récupérer ce dont il a besoin
-        super(obj);
-
-        // Mais on peut lui passer tout simplement l'id à la place ( si il attend un id )
-        // super(obj.id);
-        this._title = obj.title;
-        this._description = obj.description;
-        this._user_id = obj.user_id;
+Quiz.init({
+    // Definition des attributs de mon model
+    title: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true
     }
-
-    /**********
-   * SETTER
-   **********/
-
-    set title(value) {
-        if (typeof value !== 'string') {
-            throw Error("Quiz.title must be a string !");
-        }
-        this._title = value;
-    }
-
-    set description(value) {
-        if (typeof value !== 'string') {
-            throw Error("Quiz.description must be a string !");
-        }
-        this._description = value;
-    }
-
-    set user_id(value) {
-        if (isNaN(parseInt(value, 10))) {
-            throw Error("Quiz.user_id must be an integer !");
-        }
-        this._user_id = value;
-    }
-
-    /**********
-     * GETTER
-     **********/
-
-    get title() {
-        return this._title;
-    }
-
-    get description() {
-        return this._description;
-    }
-
-    get user_id() {
-        return this._user_id;
-    }
-}
+  }, {
+    // Configuration du model 
+    sequelize, // Passation de l'instance de la connexion en BDD
+    tableName: 'quiz' // Nom de la table
+  });
 
 module.exports = Quiz;

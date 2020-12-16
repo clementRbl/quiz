@@ -1,49 +1,18 @@
-const CoreModel = require('./CoreModel');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = require('../database');
 
-class Answer extends CoreModel {
-    _description;
-    _question_id;
+class Answer extends Model {}
 
-    constructor(obj) {
-        // Ici on passe l'objet à super ( le constructeur du parent)
-        // Afin qu'il puisse récupérer ce dont il a besoin
-        super(obj);
-
-        // Mais on peut lui passer tout simplement l'id à la place ( si il attend un id )
-        // super(obj.id);
-        this._description = obj.description;
-        this._question_id = obj.question_id;
+Answer.init({
+    // Definition des attributs de mon model
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
-
-    /**********
-   * SETTER
-   **********/
-
-    set description(value) {
-        if (typeof value !== 'string') {
-            throw Error("Answer.description must be a string !");
-        }
-        this.description = value;
-    }
-
-    set question_id(value) {
-        if (isNaN(parseInt(value, 10))) {
-            throw Error("Answer.question_id must be an integer !");
-        }
-        this.question_id = value;
-    }
-
-    /**********
-     * GETTER
-     **********/
-
-    get description() {
-        return this.description;
-    }
-
-    get question_id() {
-        return this.question_id;
-    }
-}
+  }, {
+    // Configuration du model 
+    sequelize, // Passation de l'instance de la connexion en BDD
+    tableName: 'answer' // Nom de la table
+  });
 
 module.exports = Answer;

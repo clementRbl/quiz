@@ -1,33 +1,18 @@
-const CoreModel = require("./CoreModel");
-const client = require("../database");
-class Level extends CoreModel {
-  // Nom de la table
-  static table = "level";
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = require('../database');
 
-  _name;
+class Level extends Model {}
 
-  constructor(obj) {
-    // Ici on passe l'objet à super ( le constructeur du parent)
-    // Afin qu'il puisse récupérer ce dont il a besoin
-    super(obj);
-
-    // Mais on peut lui passer tout simplement l'id à la place ( si il attend un id )
-    // super(obj.id);
-    this._name = obj.name;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  set name(value) {
-    if (typeof value !== "string") {
-      throw Error("Level.id must be a string !");
+Level.init({
+    // Definition des attributs de mon model
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
-    this._name = value;
-  }
-
-  
-}
+  }, {
+    // Configuration du model 
+    sequelize, // Passation de l'instance de la connexion en BDD
+    tableName: 'level' // Nom de la table
+  });
 
 module.exports = Level;
