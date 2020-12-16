@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const sequelize = require('./app/database');
 
-const User = require('./app/models/User');
+const {Question, Answer} = require('./app/models');
 
 //  sequelize.authenticate().then(() => {
 //    console.log('Connection has been etablished successfully');
@@ -10,8 +10,7 @@ const User = require('./app/models/User');
 //    console.error('Unable to connect to the database:', errror);
 //  })
 
-User.findByPk(3).then((user) => {
-  console.log(user);
-});
-  
+  Answer.findByPk(2).then((answer) => {
+    console.log(answer.description);
+  })
  

@@ -12,7 +12,8 @@ Answer.init({
   }, {
     // Configuration du model 
     sequelize, // Passation de l'instance de la connexion en BDD
-    tableName: 'answer' // Nom de la table
+    tableName: 'answer',// Nom de la table
+    
   });
 
 module.exports = Answer;
