@@ -1,0 +1,11 @@
+<div class="row">
+  <% questions.forEach((question) => { %> 
+  <div class="col-12">
+      <label class="badge level level--<%= question.level.name.toLowerCase() %>"><%= question.level.name %> </label>
+      <h4>
+        <%= question.question %>
+      </h4>
+      <%- include('answersList', {answers: question.answers}) %> 
+  </div>
+<% }); %> 
+</div>
