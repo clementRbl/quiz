@@ -8,10 +8,15 @@
 
         <div class="row">
             <div class="col-6 offset-3">
+                <% if (locals.error) { %> 
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %> 
+                      </div>
+                <% } %> 
                 <form action="" method="POST" class="form-signup">
 
                     <div class="form-label-group">
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                        <input type="email" class="form-control" id="email" name="email" value="<%= locals.email %> " aria-describedby="emailHelp"
                             placeholder="Votre courriel">
                         <label for="email">Votre courriel</label>
                     </div>

@@ -24,8 +24,15 @@
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-white" href="/">Accueil</a>
             <a class="p-2 text-white" href="/tags">Sujets</a>
-            <a class="p-2 text-white" href="/signup">S'inscrire</a>
-            <a class="p-2 text-white" href="/login">Se connecter</a>
+            <% if (locals.connected_user !== false) {  // Si l'utilisateur est connecté%>
+                <a class="p-2 text-white" href="/profile">Mon compte</a>
+                <a class="p-2 text-white">Connecté en tant que <%= locals.connected_user.firstname %> <%= locals.connected_user.lastname %></a>
+                <a class="p-2 text-white" href="/disconnect">Déconnexion</a>
+            <% } else { %>
+                <a class="p-2 text-white" href="/signup">S'inscrire</a>
+                <a class="p-2 text-white" href="/login">Se connecter</a>
+            <% } %>
+            
         </nav>
     </header>
     <main class="container">

@@ -22,4 +22,6 @@ router.get('/login', userController.showLogin);
 //Formulaire d'inscription
 router.get('/signup', userController.showSignup);
 
+router.post('/login', userController.loginAction);
+router.post('/signup', userController.showSignup);
 module.exports = router;
