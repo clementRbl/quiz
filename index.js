@@ -5,6 +5,9 @@ const express = require('express');
 
 const app = express();
 
+// on rajoute les gestion des POST body
+app.use(express.urlencoded({extended: true}));
+
 // reglage views
 app.set('views', 'app/views');
 app.set('view engine', 'ejs');

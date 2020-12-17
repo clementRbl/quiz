@@ -1,7 +1,7 @@
 <div class="row">
 <% tags.forEach((tag) => { %> 
   <div class="col-3 p-4 text-center">
-      <a class="btn btn-block btn-lg tag tag--<%= tag.name.toLowerCase() %> " href="#">
+      <a class="btn btn-block btn-lg tag tag--<%= tag.name.toLowerCase() %> " href="/tag/<%=tag.id%>">
           <%= tag.name %> 
       </a>
   </div>
