@@ -92,7 +92,7 @@ module.exports = {
 },
 
 
-  loginAction : (req, res) => {
+  loginAction: (req, res) => {
     // On recupere les parametres envoyes depuis la page de login
     const { email, password } = req.body;
 
@@ -126,6 +126,20 @@ module.exports = {
       // Puis on le redirigera vers la page d'accueil
       res.redirect('/')
     })
+  },
+
+  disconnectAction: (req, res) => {
+    delete req.session.user;
+    return res.redirect('/');
+  },
+
+  profilePage: (req, res) => {
+    if (!req.session.user) {
+      return res.redirect('/login');
+    }
+    res.render('profile', {
+      user: req.session.user
+    });
   }
 
 };
