@@ -7,21 +7,25 @@
         </div>
 
         <form action="/signup" method="POST" class="form-signin">
-
+            <% if (locals.error) { %> 
+                <div class="alert alert-danger" role="alert">
+                    <%= error %> 
+                  </div>
+            <% } %> 
             <div class="form-label-group">
-                <input type="lastname" class="form-control" id="lastname" name="lastname"
+                <input type="lastname" class="form-control" id="lastname" value="<%= locals.lastname %> " name="lastname"
                     aria-describedby="lastnameHelp" placeholder="Votre nom">
                 <label for="lastname">Votre nom</label>
             </div>
 
             <div class="form-label-group">
-                <input type="firstname" class="form-control" id="firstname" name="firstname"
+                <input type="firstname" class="form-control" id="firstname" value="<%= locals.firstname %> " name="firstname"
                     aria-describedby="firstnameHelp" placeholder="Votre prénom">
                 <label for="firstname">Votre prénom</label>
             </div>
 
             <div class="form-label-group">
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                <input type="email" class="form-control" id="email" name="email"  aria-describedby="emailHelp"
                     placeholder="Votre courriel">
                 <label for="email">Votre courriel</label>
                 <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre courriel.</small>

@@ -1,5 +1,6 @@
 const {User} = require('../models');
 const bcrypt = require('bcrypt');
+const emailValidator = require('email-validator');
 
 module.exports = {
   showLogin: (req, res) => {
@@ -8,6 +9,89 @@ module.exports = {
   showSignup: (req, res) => {
     res.render('signup')
   },
+
+  signUpAction: (req, res) => {
+    const {lastname, firstname, email, password, passwordConfirm} = req.body;
+    // les vérifs à faire : 
+    // - 1: format d'email valide
+    const isEmailValid = emailValidator.validate(email); // true
+    if (!isEmailValid){
+        return res.render('signup', {
+            error: `Cette adresse email n'est pas valide`,
+            firstname,
+            lastname,
+            email
+        })
+    }
+    // - 2: l'utilisateur existe déjà
+
+    User.findOne({
+        where: {
+            email
+        }
+    }).then((user) => {
+        if (user){
+            return res.render('signup', {
+                error: `Cet utilisateur existe déjà`,
+                firstname,
+                lastname,
+                email
+            })
+        }
+
+        // - 3: le mdp n'est pas vide
+        if (!password.trim()){
+            return res.render('signup', {
+                error: `Aucun mot de passe saisi`,
+                firstname,
+                lastname,
+                email
+            });
+        }
+
+        // - 4: le mdp et la confirmation ne correspondent pas
+        if (password !== passwordConfirm){
+            return res.render('signup', {
+                error: `La confirmation du mot de passe ne correspond pas`,
+                firstname,
+                lastname,
+                email
+            });
+        }
+
+        // - 5: Si on avait le courage, vérifier que le mdp répond aux recommendations CNIL...
+
+        // Si on est tout bon, on crée le User !
+        const encryptedPassword = bcrypt.hashSync(password, 10);
+
+        // Première facon de faire
+
+        // const newUser = new User({
+        //     firstname,
+        //     lastname,
+        //     email,
+        //     password: encryptedPassword
+        // });
+
+        // newUser.save().then(() => {
+        //     return res.redirect('/login')
+        // })            
+
+        // Deuxième facon de faire
+
+        const newUser = User.create({
+            firstname,
+            lastname,
+            email,
+            password: encryptedPassword
+        }).then(() => {
+            return res.redirect('/login')
+        });
+    })
+
+},
+
+
   loginAction : (req, res) => {
     // On recupere les parametres envoyes depuis la page de login
     const { email, password } = req.body;
